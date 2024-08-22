@@ -1,4 +1,4 @@
 .python-version
-./catpaw/__pycache__/*
-./catpaw/__pycache__/
-.pyc
+catpaw/catpaw/__pycache__/
+catpaw/catpaw/__pycache__/**
+*.pyc
