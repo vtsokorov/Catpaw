@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class PublishedManager(models.Manager):
+    def get_queryset(self) -> models.QuerySet:
+        return super().get_queryset().filter(
+            status=Post.Status.PUBLISHED
+        )
+
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
@@ -31,6 +37,9 @@ class Post(models.Model):
         indexes = [
             models.Index(fields=['-publish'])
         ]
+
+    objects = models.Manager()
+    published = PublishedManager()
 
 
 
